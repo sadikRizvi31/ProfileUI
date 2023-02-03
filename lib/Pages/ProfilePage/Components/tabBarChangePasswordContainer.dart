@@ -29,7 +29,7 @@ class tabBarChangePasswordContainer extends StatelessWidget {
           SizedBox(height: height * 0.01,),
           textInput(icon: Icons.lock_open_outlined, hintText: "Confirm Password"),
           SizedBox(height: height * 0.01,),
-          saveButton(),
+          saveButton(text: "Save",),
         ],
       ),
     );

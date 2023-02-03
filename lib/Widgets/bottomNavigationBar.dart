@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../Pages/HomeScreen/Components/createUser.dart';
 import '../Utils/constants.dart';
 
 class bottomNavigationBar extends StatefulWidget {
@@ -19,8 +20,8 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
     Icon(Icons.notifications),
     CircleAvatar(
       radius: 10,
-      backgroundImage: NetworkImage("https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg"),
-      foregroundImage: NetworkImage("https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg"),
+      backgroundImage: NetworkImage(profileImage),
+      foregroundImage: NetworkImage(profileImage),
     ),
   ];
 
@@ -33,6 +34,9 @@ class _bottomNavigationBarState extends State<bottomNavigationBar> {
       onTap: (int newIndex){
         setState((){
           index = newIndex;
+          if(index == 2){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => createUser()));
+          }
         });
       },
       items: [

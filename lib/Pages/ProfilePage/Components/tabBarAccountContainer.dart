@@ -27,7 +27,7 @@ class tabBarAccountContainer extends StatelessWidget {
           SizedBox(height: height * 0.01,),
           textInput(icon: Icons.email_outlined, hintText: "Email ID"),
           SizedBox(height: height * 0.01,),
-          const saveButton(),
+          saveButton(text: "save"),
         ],
       ),
     );

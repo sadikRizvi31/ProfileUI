@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praticing_ui/Pages/HomeScreen/HomeScreen.dart';
 import 'package:praticing_ui/Utils/constants.dart';
 
 import 'Pages/ProfilePage/ProfilePage.dart';
@@ -19,7 +20,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: COLOR_INDIGO,accentColor: COLOR_WHITE, textTheme: TEXT_THEME_DEFAULT,fontFamily: 'Montserrat'),
-      home: ProfilePage(),
+      home: HomeScreen(),
     );
   }
 }

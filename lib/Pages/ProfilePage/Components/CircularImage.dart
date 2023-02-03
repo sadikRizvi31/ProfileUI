@@ -15,8 +15,8 @@ class CircularImage extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           const CircleAvatar(
-            backgroundImage: NetworkImage("https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg"),
-            foregroundImage: NetworkImage("https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg"),
+            backgroundImage: NetworkImage(profileImage),
+            foregroundImage: NetworkImage(profileImage),
           ),
           Align(
             alignment: Alignment.bottomRight,

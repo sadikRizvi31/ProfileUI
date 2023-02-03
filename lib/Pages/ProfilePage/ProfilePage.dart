@@ -31,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage> with TickerProviderStateMixin
     final ThemeData themeData = Theme.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: appBar(),
+      appBar: appBar(leading: Icons.arrow_back_ios,title: 'My Profile',),
       body: DefaultTabController(
         length: 3,
         child: Container(

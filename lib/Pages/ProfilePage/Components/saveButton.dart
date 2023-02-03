@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../Utils/constants.dart';
 
 class saveButton extends StatelessWidget {
-  const saveButton({Key? key}) : super(key: key);
+
+  final String text;
+
+  saveButton({required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +16,11 @@ class saveButton extends StatelessWidget {
       height: height * 0.05,
       width: double.infinity,
       child: ElevatedButton(
-        child: Text("Save",style: themeData.textTheme.headline4,),
         style: ElevatedButton.styleFrom(
           primary: COLOR_INDIGO,
         ),
         onPressed: () {},
+        child: Text(text,style: themeData.textTheme.headline4,),
       ),
     );
   }

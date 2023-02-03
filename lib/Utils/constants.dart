@@ -7,6 +7,8 @@ const COLOR_WHITE = Colors.white;
 const COLOR_OFFWHITE = Color.fromRGBO(252, 253, 255, 1.0);
 const COLOR_INDIGO = Color.fromRGBO(46, 57, 125, 1.0);
 
+const String  profileImage = "https://pbs.twimg.com/profile_images/1485050791488483328/UNJ05AV8_400x400.jpg";
+
 const TextTheme TEXT_THEME_DEFAULT = TextTheme(
     headline1: TextStyle(
         color: COLOR_DARKGREY, fontWeight: FontWeight.w700, fontSize: 26),
@@ -27,7 +29,7 @@ const TextTheme TEXT_THEME_DEFAULT = TextTheme(
     subtitle1:
     TextStyle(color: COLOR_DARKGREY, fontSize: 12, fontWeight: FontWeight.w400),
     subtitle2: TextStyle(
-        color: COLOR_GREY, fontSize: 12, fontWeight: FontWeight.w400));
+        color: COLOR_GREY, fontSize: 12, fontWeight: FontWeight.w400),);
 
 const TextTheme TEXT_THEME_SMALL = TextTheme(
     headline1: TextStyle(

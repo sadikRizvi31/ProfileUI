@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:praticing_ui/Pages/HomeScreen/HomeScreen.dart';
+
 import 'package:praticing_ui/Utils/constants.dart';
 
-import 'Pages/ProfilePage/ProfilePage.dart';
 
 void main() {
   runApp(const MyApp());

@@ -19,8 +19,13 @@ class tableView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     return Scaffold(
-      backgroundColor: COLOR_OFFWHITE,
-      appBar: appBar(leading: Icons.arrow_back_ios,title: tableName,trailing: Icons.more_vert_outlined,),
+      appBar: appBar(leading: Icons.arrow_back_ios,title: tableName, list: tableName == 'Product List' ?
+      ['Total Purchase Device','Total Sale Device','Create Product'] :
+          tableName == 'Customer List' ? ['Total Customer', 'Create Customer'] :
+              tableName == 'Repair Device List' ? ['Pending Device','Repaired Device','Fill The Details'] :
+                  ['Total Vendor','Create Vendor']
+      ),
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -32,14 +37,12 @@ class tableView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: dataTable(tableName: tableName,columnName: columnName,rowValues: rowValues),
                 ),
-                tableOptionMenu(tableOptions: tableOptions),
               ],
             ),
 
           ),
         ],
       ),
-      bottomNavigationBar: const bottomNavigationBar(),
     );
   }
 }

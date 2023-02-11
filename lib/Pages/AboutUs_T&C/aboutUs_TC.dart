@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:praticing_ui/Widgets/appBar.dart';
-import 'package:praticing_ui/Widgets/bottomNavigationBar.dart';
 
 class aboutUs_TC extends StatelessWidget {
 
@@ -17,11 +16,10 @@ class aboutUs_TC extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
-          padding: EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(4.0),
           child: Text(text,style: themeData.textTheme.bodyText2,maxLines: 500,),
         ),
       ),
-      bottomNavigationBar: bottomNavigationBar(),
     );
   }
 }

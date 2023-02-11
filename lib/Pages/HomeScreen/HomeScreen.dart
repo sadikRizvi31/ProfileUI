@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:praticing_ui/Pages/HomeScreen/Components/dashBoardCards.dart';
+import 'package:praticing_ui/Widgets/SideBarMenu/sideBarMenu.dart';
 import 'package:praticing_ui/Widgets/appBar.dart';
-import 'package:praticing_ui/Widgets/bottomNavigationBar.dart';
-import '../../Widgets/SideBarMenu/sideBarMenu.dart';
+import '../../Utils/constants.dart';
+import '../../Widgets/navBarItems.dart';
+import '../MyTeams/myTeamView.dart';
+import '../ProfilePage/ProfilePage.dart';
+import 'Components/createUser.dart';
+import 'Components/homeScreenUI.dart';
+import 'Components/notificationScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,27 +19,45 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  int device = 0;
-  int amount = 0;
+
+  final List<Widget> _BottomNavPages = [
+    homeScreenUI(),
+    myTeamView(),
+    createUser(),
+    notificationScreen(),
+    ProfilePage(),
+  ];
+
+  String? _result;
+
+  int _selectedIndex = 0;
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
+
+    void _onItemTapped(int index) async {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+
+
     return Scaffold(
-      drawer: sideBarMenu(),
-      appBar: appBar(leading: Icons.menu,title: 'DashBoard',trailing: Icons.search_outlined,),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            dashBoardCards(title: "Total Sale", info1: "Device: "+device.toString(), info2: "Amount: "+amount.toString(), image: "https://static.thenounproject.com/png/1625260-200.png"),
-            dashBoardCards(title: "Total Purchase", info1: "Device: "+device.toString(), info2: "Amount: "+amount.toString(), image: "https://cdn-icons-png.flaticon.com/128/1067/1067555.png"),
-            dashBoardCards(title: "Total Stock", info1: "Device: "+device.toString(), info2: "Amount: "+amount.toString(), image: "https://static.thenounproject.com/png/1877748-200.png"),
-            dashBoardCards(title: "Total Repair Device", info1: "Repair: "+device.toString(), info2: "Pending: "+amount.toString(), image: "https://cdn-icons-png.flaticon.com/512/35/35223.png"),
-          ],
-        ),
-      ),
-      bottomNavigationBar: const bottomNavigationBar(),
+      resizeToAvoidBottomInset: true,
+      appBar: _selectedIndex == 0 ?
+      appBar(leading: Icons.menu,title: 'Dashboard',trailing: Icons.search_outlined):
+      _selectedIndex == 1 ? appBar(leading: Icons.menu,title: 'My Team',) :
+      _selectedIndex == 2 ? appBar(leading: Icons.arrow_back_ios,title: 'Create User',) :
+      _selectedIndex == 3 ? appBar(leading: Icons.menu,title: 'Notifications',) : appBar(leading: Icons.arrow_back_ios,title: 'My Profile',),
+
+      drawer: _selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 3 ? sideBarMenu() : null,
+
+      body: _BottomNavPages[_selectedIndex],
+
+      bottomNavigationBar: navBarItems(selectedIndex: _selectedIndex,onTap: _onItemTapped,),
     );
   }
 }

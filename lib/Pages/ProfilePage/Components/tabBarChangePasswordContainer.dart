@@ -17,20 +17,22 @@ class tabBarChangePasswordContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         color: COLOR_OFFWHITE,
       ),
-      child: Column(
-        children: [
-          Text("your new password must be different from previous used paasword",textAlign: TextAlign.center,
-            style: themeData.textTheme.subtitle1,
-          ),
-          SizedBox(height: height * 0.02,),
-          textInput(icon: Icons.lock_open_outlined, hintText: "Enter Current Password"),
-          SizedBox(height: height * 0.01,),
-          textInput(icon: Icons.lock_open_outlined, hintText: "Enter New Password"),
-          SizedBox(height: height * 0.01,),
-          textInput(icon: Icons.lock_open_outlined, hintText: "Confirm Password"),
-          SizedBox(height: height * 0.01,),
-          saveButton(text: "Save",),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text("your new password must be different from previous used paasword",textAlign: TextAlign.center,
+              style: themeData.textTheme.subtitle1,
+            ),
+            SizedBox(height: height * 0.02,),
+            textInput(icon: Icons.lock_open_outlined, hintText: "Enter Current Password",keyboardType: TextInputType.text),
+            SizedBox(height: height * 0.01,),
+            textInput(icon: Icons.lock_open_outlined, hintText: "Enter New Password",keyboardType: TextInputType.text),
+            SizedBox(height: height * 0.01,),
+            textInput(icon: Icons.lock_open_outlined, hintText: "Confirm Password",keyboardType: TextInputType.text),
+            SizedBox(height: height * 0.01,),
+            saveButton(text: "Save",),
+          ],
+        ),
       ),
     );
   }

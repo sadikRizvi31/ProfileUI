@@ -17,18 +17,16 @@ class tabBarAccountContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         color: COLOR_OFFWHITE,
       ),
-      child: Column(
-        children: [
-          textInput(icon: Icons.person_outline_sharp, hintText: "Full Name"),
-          SizedBox(height: height * 0.01,),
-          textInput(icon: Icons.location_city_outlined, hintText: "Company Name"),
-          SizedBox(height: height * 0.01,),
-          textInput(icon: Icons.phone_in_talk_outlined, hintText: "Phone Number"),
-          SizedBox(height: height * 0.01,),
-          textInput(icon: Icons.email_outlined, hintText: "Email ID"),
-          SizedBox(height: height * 0.01,),
-          saveButton(text: "save"),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            textInput(icon: Icons.person_outline_sharp, hintText: "Full Name",keyboardType: TextInputType.text),
+            textInput(icon: Icons.location_city_outlined, hintText: "Company Name",keyboardType: TextInputType.text),
+            textInput(icon: Icons.phone_in_talk_outlined, hintText: "Phone Number",keyboardType: TextInputType.phone),
+            textInput(icon: Icons.email_outlined, hintText: "Email ID",keyboardType: TextInputType.emailAddress),
+            saveButton(text: "Save"),
+          ],
+        ),
       ),
     );
   }

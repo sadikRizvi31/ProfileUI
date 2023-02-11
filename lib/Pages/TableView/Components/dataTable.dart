@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:praticing_ui/Pages/ProfilePage/Components/customListTile.dart';
+import 'package:praticing_ui/Pages/TableView/Components/viewSingleVendor.dart';
 
 import '../../../Widgets/customDialog.dart';
 import '../../ProfilePage/Components/saveButton.dart';
@@ -32,8 +33,27 @@ class dataTable extends StatelessWidget {
               button: saveButton(text: "Update"),
               childrens: [
                 dropDown(dropDownList: ['Running','Pending','Done'], hint: "Select Status", icon: Icons.account_tree_outlined),
-                textInput(icon: Icons.currency_rupee_outlined, hintText: "Cost"),
-                textInput(icon: Icons.calendar_month_outlined, hintText: "Estimated Date/Time"),
+                textInput(icon: Icons.currency_rupee_outlined, hintText: "Cost",keyboardType: TextInputType.number),
+                textInput(icon: Icons.calendar_month_outlined, hintText: "Estimated Date/Time",keyboardType: TextInputType.datetime),
+              ],
+            );
+          }
+      );
+    }
+
+    Future<void> editCustomerDetailsDialog(BuildContext context) async {
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return customDialog(
+              title: "Repair Device Status Update",
+              button: saveButton(text: "Update"),
+              childrens: [
+                textInput(icon: Icons.person_outline_sharp, hintText: "First Name",keyboardType: TextInputType.text),
+                textInput(icon: Icons.person_outline_sharp, hintText: "Last Name",keyboardType: TextInputType.text),
+                textInput(icon: Icons.email_outlined, hintText: "Email ID",keyboardType: TextInputType.emailAddress),
+                textInput(icon: Icons.phone_in_talk_rounded, hintText: "Phone Number",keyboardType: TextInputType.phone),
+                textInput(icon: Icons.my_location_outlined, hintText: "Address",keyboardType: TextInputType.streetAddress),
               ],
             );
           }
@@ -45,7 +65,7 @@ class dataTable extends StatelessWidget {
           context: context,
           builder: (context) {
             return customDialog(
-              title: "Repair Device Details",
+              title: "Edit Customer Details",
               button: null,
               childrens: [
                 customListTile(leading: Icons.phone_android_outlined, title: "Product Name", name: "Iphone 14 pro max"),
@@ -83,6 +103,12 @@ class dataTable extends StatelessWidget {
                   //log.add('row-selected: ${itemRow.index}');
                   if(tableName == 'Repair Device List'){
                     deviceRepairDetailsDialog(context);
+                  }
+                  if(tableName == 'Customer List'){
+                    editCustomerDetailsDialog(context);
+                  }
+                  if(tableName == 'Vendor List'){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => viewSingleVendor()));
                   }
                 }
               },

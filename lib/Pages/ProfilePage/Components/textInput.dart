@@ -7,8 +7,9 @@ class textInput extends StatelessWidget {
   final IconData icon;
   final String hintText;
   final IconData? suffixIcon;
+  final TextInputType keyboardType;
 
-  textInput({required this.icon,required this.hintText,this.suffixIcon});
+  textInput({required this.icon,required this.hintText,this.suffixIcon, required this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +37,12 @@ class textInput extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.0),
             ),
             child: TextField(
+              keyboardType: keyboardType,
               decoration: new InputDecoration(
                 isCollapsed: true,
                 border: InputBorder.none,
                 suffixIcon: suffixIcon != null ? IconButton(
-                    icon: Icon(Icons.clear_outlined,size: 15),
+                    icon: Icon(suffixIcon,size: 15),
                     onPressed: () {
                       debugPrint('222');
                     }

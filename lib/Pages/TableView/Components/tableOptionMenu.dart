@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:praticing_ui/Pages/HomeScreen/Components/createVendor.dart';
 import 'package:praticing_ui/Pages/ProfilePage/Components/saveButton.dart';
 
 import 'package:praticing_ui/Pages/TableView/Components/dropDown.dart';
 import 'package:praticing_ui/Pages/ProfilePage/Components/textInput.dart';
 import 'package:praticing_ui/Utils/constants.dart';
+import 'package:praticing_ui/Widgets/bottomNavigationBar.dart';
 import '../../../Widgets/customDialog.dart';
+import '../../HomeScreen/Components/createUser.dart';
 
 class tableOptionMenu extends StatelessWidget {
 
@@ -25,10 +28,10 @@ class tableOptionMenu extends StatelessWidget {
               title: "Create Product",
               button: saveButton(text: "Save"),
               childrens: [
-                textInput(icon: Icons.production_quantity_limits, hintText: "Product Name"),
+                textInput(icon: Icons.production_quantity_limits, hintText: "Product Name",keyboardType: TextInputType.text),
                 dropDown(dropDownList: ['01','02','03','04','05'], hint: "Category ID", icon: Icons.account_tree_outlined),
-                textInput(icon: Icons.inventory_2_outlined, hintText: "Quantity"),
-                textInput(icon: Icons.currency_rupee_outlined, hintText: "Price"),
+                textInput(icon: Icons.inventory_2_outlined, hintText: "Quantity",keyboardType: TextInputType.number),
+                textInput(icon: Icons.currency_rupee_outlined, hintText: "Price",keyboardType: TextInputType.number),
               ],
             );
           }
@@ -43,12 +46,12 @@ class tableOptionMenu extends StatelessWidget {
               title: "Fill Repair Device Details",
               button: saveButton(text: "Save"),
               childrens: [
-                textInput(icon: Icons.phone_android_outlined, hintText: "Product Name"),
-                textInput(icon: Icons.person_outline_sharp, hintText: "Product Holder Name"),
-                textInput(icon: Icons.account_tree_outlined, hintText: "Category ID"),
-                textInput(icon: Icons.report_problem_outlined, hintText: "Problem"),
-                textInput(icon: Icons.phone_in_talk_rounded, hintText: "Phone Number"),
-                textInput(icon: Icons.my_location_outlined, hintText: "Address"),
+                textInput(icon: Icons.phone_android_outlined, hintText: "Product Name",keyboardType: TextInputType.text),
+                textInput(icon: Icons.person_outline_sharp, hintText: "Product Holder Name",keyboardType: TextInputType.text),
+                textInput(icon: Icons.account_tree_outlined, hintText: "Category ID",keyboardType: TextInputType.number),
+                textInput(icon: Icons.report_problem_outlined, hintText: "Problem",keyboardType: TextInputType.text),
+                textInput(icon: Icons.phone_in_talk_rounded, hintText: "Phone Number",keyboardType: TextInputType.phone),
+                textInput(icon: Icons.my_location_outlined, hintText: "Address",keyboardType: TextInputType.streetAddress),
               ],
             );
           }
@@ -67,6 +70,12 @@ class tableOptionMenu extends StatelessWidget {
               }
               if(option == 'Fill The Details'){
                 repairDeviceDetailsDialog(context);
+              }
+              if(option == 'Create Customer'){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => bottomNavigationBar(2)));
+              }
+              if(option == 'Create Vendor'){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => createVendor()));
               }
             },
           ),

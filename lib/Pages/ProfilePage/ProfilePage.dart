@@ -29,10 +29,8 @@ class _ProfilePageState extends State<ProfilePage> with TickerProviderStateMixin
     double width = MediaQuery.of(context).size.width;
 
     final ThemeData themeData = Theme.of(context);
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: appBar(leading: Icons.arrow_back_ios,title: 'My Profile',),
-      body: DefaultTabController(
+    return Material(
+      child: DefaultTabController(
         length: 3,
         child: Container(
           height: double.infinity,
@@ -63,7 +61,6 @@ class _ProfilePageState extends State<ProfilePage> with TickerProviderStateMixin
           ),
         ),
       ),
-      bottomNavigationBar: const bottomNavigationBar(),
     );
   }
 }

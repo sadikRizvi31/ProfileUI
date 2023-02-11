@@ -30,7 +30,7 @@ class dashBoardCards extends StatelessWidget {
             ),
           ]
       ),
-      margin: EdgeInsets.all(16),
+      margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(16),
       child: Row(
         children: [

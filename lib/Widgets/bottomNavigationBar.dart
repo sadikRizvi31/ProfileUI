@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'package:praticing_ui/Pages/HomeScreen/Components/notificationScreen.dart';
+import 'package:praticing_ui/Pages/HomeScreen/HomeScreen.dart';
+import 'package:praticing_ui/Pages/MyTeams/myTeamView.dart';
+import 'package:praticing_ui/Pages/ProfilePage/ProfilePage.dart';
+import 'package:praticing_ui/Widgets/SideBarMenu/sideBarMenu.dart';
+import 'package:praticing_ui/Widgets/navBarItems.dart';
 import '../Pages/HomeScreen/Components/createUser.dart';
-import '../Utils/constants.dart';
+import 'appBar.dart';
 
 class bottomNavigationBar extends StatefulWidget {
-  const bottomNavigationBar({Key? key}) : super(key: key);
+
+  int? index;
+  bottomNavigationBar([this.index]);
 
   @override
   State<bottomNavigationBar> createState() => _bottomNavigationBarState();
@@ -12,55 +20,38 @@ class bottomNavigationBar extends StatefulWidget {
 
 class _bottomNavigationBarState extends State<bottomNavigationBar> {
 
-  int index = 0;
-  List<Widget> body = const[
-    Icon(Icons.home),
-    Icon(Icons.people_alt_outlined),
-    Icon(Icons.person_add_alt_outlined),
-    Icon(Icons.notifications),
-    CircleAvatar(
-      radius: 10,
-      backgroundImage: NetworkImage(profileImage),
-      foregroundImage: NetworkImage(profileImage),
-    ),
-  ];
+  final List<Widget> _pages = [    HomeScreen(),    myTeamView(),    createUser(), notificationScreen(), ProfilePage()  ];
+
+  int? _selectedIndex = 0;
+
+  @override
+  void initState() {
+    _selectedIndex = widget.index;
+  }
+
+
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: index,
-      selectedItemColor: COLOR_INDIGO,
-      unselectedItemColor: COLOR_DARKGREY,
-      onTap: (int newIndex){
-        setState((){
-          index = newIndex;
-          if(index == 2){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => createUser()));
-          }
-        });
-      },
-      items: [
-        BottomNavigationBarItem(
-            icon: body[0],
-            label: "Home"
-        ),
-        BottomNavigationBarItem(
-            icon: body[1],
-            label: "My Team"
-        ),
-        BottomNavigationBarItem(
-            icon: body[2],
-            label: "Create Users"
-        ),
-        BottomNavigationBarItem(
-            icon: body[3],
-            label: "Notifications"
-        ),
-        BottomNavigationBarItem(
-            icon: body[4],
-            label: "Profile"
-        ),
-      ],
+    void _onItemTapped(int index) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+
+    return Scaffold(
+      appBar: _selectedIndex == 0 ?
+      appBar(leading: Icons.menu,title: 'Dashboard',trailing: Icons.search_outlined):
+      _selectedIndex == 1 ? appBar(leading: Icons.menu,title: 'My Team',) :
+      _selectedIndex == 2 ? appBar(leading: Icons.arrow_back_ios,title: 'Create User',) :
+      _selectedIndex == 3 ? appBar(leading: Icons.menu,title: 'Notifications',) :
+      appBar(leading: Icons.arrow_back_ios,title: 'My Profile',),
+      drawer: _selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 3 ? sideBarMenu() : null,
+      body: _pages[_selectedIndex!],
+      bottomNavigationBar: navBarItems(selectedIndex: _selectedIndex!,onTap: _onItemTapped,)
     );
   }
 }

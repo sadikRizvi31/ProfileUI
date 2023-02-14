@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:praticing_ui/Pages/TableView/Components/dataTable.dart';
 import 'package:praticing_ui/Pages/TableView/Components/tableOptionMenu.dart';
 import 'package:praticing_ui/Utils/constants.dart';
+import 'package:praticing_ui/Widgets/SideBarMenu/sideBarMenu.dart';
 import 'package:praticing_ui/Widgets/appBar.dart';
 import 'package:praticing_ui/Widgets/bottomNavigationBar.dart';
 
@@ -26,6 +27,7 @@ class tableView extends StatelessWidget {
                   ['Total Vendor','Create Vendor']
       ),
 
+      drawer: sideBarMenu(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../Utils/constants.dart';
 
-class dropDown extends StatelessWidget {
+class dropDown extends StatefulWidget {
 
   final List dropDownList;
   final String hint;
@@ -12,7 +12,17 @@ class dropDown extends StatelessWidget {
   dropDown({required this.dropDownList, required this.hint, required this.icon});
 
   @override
+  State<dropDown> createState() => _dropDownState();
+}
+
+class _dropDownState extends State<dropDown> {
+
+  String? currentSelectedValue;
+  @override
   Widget build(BuildContext context) {
+
+
+
     final ThemeData themeData = Theme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -23,7 +33,7 @@ class dropDown extends StatelessWidget {
             color: COLOR_GREY,
           ),
           padding: const EdgeInsets.all(5),
-          child: Icon(icon,size: 25,color: COLOR_INDIGO,),
+          child: Icon(widget.icon,size: 25,color: COLOR_INDIGO,),
         ),
         SizedBox(width: 9.0,),
         Flexible(
@@ -38,14 +48,19 @@ class dropDown extends StatelessWidget {
             ),
             child: DropdownButton(
               isExpanded: true,
-              hint: Text(hint,style: themeData.textTheme.headline4,),
-              items: dropDownList.map((value) {
+              value: currentSelectedValue,
+              hint: Text(widget.hint,style: themeData.textTheme.headline4,),
+              onChanged: (newValue) {
+                setState(() {
+                  currentSelectedValue = newValue.toString();
+                });
+              },
+              items: widget.dropDownList.map((value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: Text(value,style: themeData.textTheme.headline5,),
                 );
               }).toList(),
-              onChanged: (_) {},
             )
           ),
         ),

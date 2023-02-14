@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:praticing_ui/Pages/HomeScreen/Components/createVendor.dart';
+import 'package:praticing_ui/Widgets/SideBarMenu/sideBarMenu.dart';
 
 import '../Pages/ProfilePage/Components/saveButton.dart';
 import '../Pages/ProfilePage/Components/textInput.dart';
@@ -10,12 +11,13 @@ import 'customDialog.dart';
 
 class appBar extends StatelessWidget with PreferredSizeWidget {
 
+  final GlobalKey<ScaffoldState>? scaffoldKey;
   final IconData leading;
   final IconData? trailing;
   final String title;
   final List<String>? list;
 
-  appBar({required this.leading,this.trailing,required this.title, this.list});
+  appBar({required this.leading,this.trailing,required this.title, this.list,this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +87,10 @@ class appBar extends StatelessWidget with PreferredSizeWidget {
           leading,
           color: COLOR_DARKGREY,
         ),
-        onPressed: () {},
+        onPressed: () {
+          (leading.toString()).contains('IconData(U+0E3DC)') ? scaffoldKey!.currentState!.openDrawer() : Navigator.pop(context);
+          print(leading);
+        },
       ),
       actions: [
         //IconButton(onPressed: (){}, icon: Icon(trailing != null ? trailing : null),tooltip: 'search icon',color: COLOR_INDIGO,),

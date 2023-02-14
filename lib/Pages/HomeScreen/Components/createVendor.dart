@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:praticing_ui/Pages/HomeScreen/Components/imagePicker.dart';
 import 'package:praticing_ui/Pages/ProfilePage/Components/saveButton.dart';
 import 'package:praticing_ui/Pages/ProfilePage/Components/textInput.dart';
+import 'package:praticing_ui/Widgets/SideBarMenu/sideBarMenu.dart';
 
 import '../../../Widgets/appBar.dart';
 
@@ -11,6 +13,7 @@ class createVendor extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(leading: Icons.arrow_back_ios,title: 'Create User',trailing: Icons.more_vert_outlined,),
+      drawer: sideBarMenu(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -21,9 +24,9 @@ class createVendor extends StatelessWidget {
           textInput(icon: Icons.phone_in_talk_outlined,hintText: "Phone Number",keyboardType: TextInputType.phone),
           textInput(icon: Icons.my_location_outlined, hintText: "Address",keyboardType: TextInputType.streetAddress),
           textInput(icon: Icons.currency_rupee, hintText: "GST No.",suffixIcon: Icons.dangerous,keyboardType: TextInputType.number),
-          textInput(icon: Icons.image_outlined, hintText: "GST Certificate Image", suffixIcon: Icons.photo_camera_outlined,keyboardType: TextInputType.none),
+          imagePicker(icon: Icons.image_outlined, hintText: "GST Certificate Image"),
           textInput(icon: Icons.file_present_rounded, hintText: "Document Number",suffixIcon: Icons.dangerous,keyboardType: TextInputType.number),
-          textInput(icon: Icons.document_scanner_outlined, hintText: "Document Image", suffixIcon: Icons.photo_camera_outlined,keyboardType: TextInputType.none),
+          imagePicker(icon: Icons.document_scanner_outlined, hintText: "Document Image",),
           SizedBox(height: MediaQuery.of(context).size.height * 0.05,),
           Container(margin: EdgeInsets.only(left: 22,right: 22),child: saveButton(text: "Save")),
         ],

@@ -1,18 +1,32 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class SplashScreen extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:praticing_ui/Utils/constants.dart';
+
+import 'HomeScreen.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  void initState() {
+    super.initState();
+    Timer(
+        Duration(seconds: 4),
+            () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => HomeScreen())));
+  }
+  @override
   Widget build(BuildContext context) {
-    ThemeData themeData = Theme.of(context);
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text("JCW Telecom",style: themeData.textTheme.headline1),
-        ],
+    return Container(
+      color: COLOR_WHITE,
+      child: Center(
+        child: Image(image: AssetImage("assets/images/img.png")),
       ),
     );
   }

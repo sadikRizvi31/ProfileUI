@@ -37,6 +37,7 @@ class textInput extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.0),
             ),
             child: TextField(
+              style: themeData.textTheme.headline5,
               keyboardType: keyboardType,
               decoration: new InputDecoration(
                 isCollapsed: true,

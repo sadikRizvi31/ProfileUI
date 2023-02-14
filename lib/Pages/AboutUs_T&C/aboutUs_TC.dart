@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praticing_ui/Widgets/SideBarMenu/sideBarMenu.dart';
 import 'package:praticing_ui/Widgets/appBar.dart';
 
 class aboutUs_TC extends StatelessWidget {
@@ -13,6 +14,7 @@ class aboutUs_TC extends StatelessWidget {
     final ThemeData themeData = Theme.of(context);
     return Scaffold(
       appBar: appBar(leading: Icons.arrow_back_ios,title: title,),
+      drawer: sideBarMenu(),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(

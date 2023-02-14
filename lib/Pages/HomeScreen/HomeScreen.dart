@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:praticing_ui/Widgets/SideBarMenu/sideBarMenu.dart';
 import 'package:praticing_ui/Widgets/appBar.dart';
-import '../../Utils/constants.dart';
 import '../../Widgets/navBarItems.dart';
 import '../MyTeams/myTeamView.dart';
 import '../ProfilePage/ProfilePage.dart';
@@ -18,6 +17,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
 
 
   final List<Widget> _BottomNavPages = [
@@ -46,14 +47,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
     return Scaffold(
+      key: scaffoldKey,
       resizeToAvoidBottomInset: true,
       appBar: _selectedIndex == 0 ?
-      appBar(leading: Icons.menu,title: 'Dashboard',trailing: Icons.search_outlined):
-      _selectedIndex == 1 ? appBar(leading: Icons.menu,title: 'My Team',) :
-      _selectedIndex == 2 ? appBar(leading: Icons.arrow_back_ios,title: 'Create User',) :
-      _selectedIndex == 3 ? appBar(leading: Icons.menu,title: 'Notifications',) : appBar(leading: Icons.arrow_back_ios,title: 'My Profile',),
+      appBar(leading: Icons.menu,title: 'Dashboard',trailing: Icons.search_outlined,scaffoldKey: scaffoldKey,):
+      _selectedIndex == 1 ? appBar(leading: Icons.menu,title: 'My Team',scaffoldKey: scaffoldKey) :
+      _selectedIndex == 2 ? appBar(leading: Icons.menu,title: 'Create User',scaffoldKey: scaffoldKey) :
+      _selectedIndex == 3 ? appBar(leading: Icons.menu,title: 'Notifications',scaffoldKey: scaffoldKey) : appBar(leading: Icons.menu,title: 'My Profile',scaffoldKey: scaffoldKey),
 
-      drawer: _selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 3 ? sideBarMenu() : null,
+      //drawer: _selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 3 ? sideBarMenu() : null,
+      drawer: sideBarMenu(),
 
       body: _BottomNavPages[_selectedIndex],
 

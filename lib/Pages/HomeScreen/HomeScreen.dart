@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       key: scaffoldKey,
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       appBar: _selectedIndex == 0 ?
       appBar(leading: Icons.menu,title: 'Dashboard',trailing: Icons.search_outlined,scaffoldKey: scaffoldKey,):
       _selectedIndex == 1 ? appBar(leading: Icons.menu,title: 'My Team',scaffoldKey: scaffoldKey) :

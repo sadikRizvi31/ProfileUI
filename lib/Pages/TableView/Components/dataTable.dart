@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:praticing_ui/Pages/HomeScreen/Components/datePicker.dart';
 import 'package:praticing_ui/Pages/ProfilePage/Components/customListTile.dart';
 import 'package:praticing_ui/Pages/TableView/Components/viewSingleVendor.dart';
 
@@ -34,7 +35,7 @@ class dataTable extends StatelessWidget {
               childrens: [
                 dropDown(dropDownList: ['Running','Pending','Done'], hint: "Select Status", icon: Icons.account_tree_outlined),
                 textInput(icon: Icons.currency_rupee_outlined, hintText: "Cost",keyboardType: TextInputType.number),
-                textInput(icon: Icons.calendar_month_outlined, hintText: "Estimated Date/Time",keyboardType: TextInputType.datetime),
+                datePicker(hintText: "Estimated Date/Time"),
               ],
             );
           }

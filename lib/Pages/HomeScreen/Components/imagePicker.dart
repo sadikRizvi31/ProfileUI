@@ -62,6 +62,7 @@ class _imagePickerState extends State<imagePicker> {
                   borderRadius: BorderRadius.circular(5.0),
                 ),
                 child: TextField(
+                  readOnly: true,
                   style: themeData.textTheme.headline5,
                   keyboardType: TextInputType.none,
                   decoration: new InputDecoration(
@@ -76,7 +77,6 @@ class _imagePickerState extends State<imagePicker> {
                 right: 1.0,
                 top: 0.0,
                 child: TextButton.icon(
-
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(COLOR_INDIGO),
                   ),

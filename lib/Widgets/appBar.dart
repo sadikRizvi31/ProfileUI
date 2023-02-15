@@ -78,6 +78,7 @@ class appBar extends StatelessWidget with PreferredSizeWidget {
 
     final ThemeData themeData = Theme.of(context);
     return AppBar(
+
       centerTitle: true,
       backgroundColor: COLOR_WHITE,
       elevation: 3.0,

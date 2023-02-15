@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:praticing_ui/Pages/AboutUs_T&C/aboutUs_TC.dart';
+import 'package:praticing_ui/Pages/HomeScreen/Components/datePicker.dart';
 import 'package:praticing_ui/Utils/constants.dart';
 import 'package:praticing_ui/Widgets/bottomNavigationBar.dart';
 import '../../../Pages/ProfilePage/Components/saveButton.dart';
@@ -31,8 +32,8 @@ class _createOptionsState extends State<createOptions> {
               title: "Create Product",
               button: saveButton(text: "Download"),
               childrens: [
-                textInput(icon: Icons.calendar_month_outlined, hintText: "Select Last Date",keyboardType: TextInputType.datetime),
-                textInput(icon: Icons.calendar_month_outlined, hintText: "Select First Date",keyboardType: TextInputType.datetime),
+                datePicker(hintText: "Select Last Date"),
+                datePicker(hintText: "Select First Date"),
                 dropDown(dropDownList: ['01','02','03','04','05'], hint: "Category ID", icon: Icons.account_tree_outlined),
               ],
             );

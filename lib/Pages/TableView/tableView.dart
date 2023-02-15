@@ -20,6 +20,7 @@ class tableView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: appBar(leading: Icons.arrow_back_ios,title: tableName, list: tableName == 'Product List' ?
       ['Total Purchase Device','Total Sale Device','Create Product'] :
           tableName == 'Customer List' ? ['Total Customer', 'Create Customer'] :

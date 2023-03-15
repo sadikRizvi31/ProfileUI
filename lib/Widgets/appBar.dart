@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:praticing_ui/Pages/HomeScreen/Components/createVendor.dart
+import 'package:praticing_ui/Pages/HomeScreen/Components/createVendor.dart';
 
 import '../Pages/ProfilePage/Components/saveButton.dart';
 import '../Pages/ProfilePage/Components/textInput.dart';

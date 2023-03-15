@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 
 class notificationScreen extends StatelessWidget {
-  const notificationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ThemeData themeData = Theme.of(context);
     return ListView.builder(
       itemCount: 20,
       itemBuilder: (context, index) {
-        return Card(
-          margin: EdgeInsets.all(8.0),
-          child: ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage('https://picsum.photos/200'),
-            ),
-            title: Text('Username'),
-            subtitle: Text('Liked your post'),
-            trailing: Text('1h'),
+        return ListTile(
+          leading: CircleAvatar(
+            backgroundImage: AssetImage("assets/images/only_logo.png"),
           ),
+          title: Row(
+            children: [
+              Text('Dear Customer',style: themeData.textTheme.headline5,),
+              Text(' your device has been repaired.',style: themeData.textTheme.headline6,),
+            ],
+          ),
+          subtitle: Text('01m ago',style: themeData.textTheme.headline6,),
         );
       },
     );

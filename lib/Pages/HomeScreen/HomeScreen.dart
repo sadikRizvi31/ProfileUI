@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar(leading: Icons.menu,title: 'Dashboard',trailing: Icons.search_outlined,scaffoldKey: scaffoldKey,):
       _selectedIndex == 1 ? appBar(leading: Icons.menu,title: 'My Team',scaffoldKey: scaffoldKey) :
       _selectedIndex == 2 ? appBar(leading: Icons.menu,title: 'Create User',scaffoldKey: scaffoldKey) :
-      _selectedIndex == 3 ? appBar(leading: Icons.menu,title: 'Notifications',scaffoldKey: scaffoldKey) : appBar(leading: Icons.menu,title: 'My Profile',scaffoldKey: scaffoldKey),
+      _selectedIndex == 3 ? appBar(title: 'Notifications',scaffoldKey: scaffoldKey) : appBar(leading: Icons.menu,title: 'My Profile',scaffoldKey: scaffoldKey),
 
       //drawer: _selectedIndex == 0 || _selectedIndex == 1 || _selectedIndex == 3 ? sideBarMenu() : null,
       drawer: sideBarMenu(),
